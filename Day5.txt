@@ -1,0 +1,217 @@
+Q1.Write a program that reads 5 Random 3 Digit values and then outputs the minimum 
+and the maximum value        day44.sh
+
+
+#!/bin/bash
+
+echo "Enter Num1"
+read num1
+echo "Enter Num2"
+read num2
+echo "Enter Num3"
+read num3
+
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]
+then
+echo $num1
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]
+then
+echo $num2
+else
+echo $num3
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q1. Read a single digit number and write the number in word
+Ans.:-                 day45.sh
+
+
+#!/bin/bash
+
+echo -n "Enter number : "
+read n
+ 
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+ 
+echo "Your number $n in words : "
+for (( i=1; i<=$len; i++ ))
+do
+   # get one digit at a time
+    digit=$(echo $n | cut -c $i)
+   # use case control structure to find digit equivalent in words 
+    case $digit in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac	
+done
+
+
+
+
+Q2. Read a Number and Display the week day (Sunday, Monday,…)
+                            day46.sh
+Ans.:-
+
+
+#!/bin/bash
+
+echo "enter a number"
+read n
+case $n in
+1) echo "Sunday" ;;
+2)echo "Monday" ;;
+3) echo "Tuesday" ;;
+4) echo "Wednesday" ;;
+5) echo "Thursday" ;;
+6) echo "Friday" ;;
+7) echo "Saturday" ;;
+*) echo "enter value between 1 to 7" ;;
+esac
+
+
+
+Q3. Read a Number 1, 10, 100, 1000, etc and display unit, ten, hundred,…
+
+Ans.:-
+
+
+#!/bin/bash
+num = int(input("Please give me a number: "))
+print(num)
+thou = int((num // 1000))
+print(thou)
+hun = int((num // 100))
+print(hun)
+ten =int((num // 10))
+print(ten)
+one = int((num // 1))
+print(one)
+
+
+Q4. Enter 3 Numbers do following arithmetic operation and find the one that 
+is maximum and minimum
+1. a + b * c 3. c + a / b
+2. a % b + c 4. a * b + c
+
+Ans.:-
+
+
+#!/bin/bash
+
+a=10
+b=20
+c=15
+
+val='expr $a + $b * $c'
+echo "a + b * c : $val"
+
+val='expr $a % $b + $c'
+echo "a % b + c : $val"
+
+val='expr $c + $a / $b'
+echo "c + a / b : $val"
+
+val='expr $a * $b + $c'
+echo "a * b + c : $val"
+
+if [ $a == $b ]
+then
+   echo "a is equal to b"
+fi
+
+if [ $a != $b ]
+then
+   echo "a is not equal to b"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q. check number is a palindrome or not
+eg:121 is a palindrom
+123 is not a palindrome
+
+
+
+
+echo "enter num"
+read num
+
+function palindrome
+{
+sum=0
+rev=$num
+while [[ num -gt 0 ]]
+do
+rem=$(( $num % 10 ))
+sum=$(( $sum * 10 + $rem ))
+#echo "sum is $sum"
+num=$(( $num / 10 ))
+#echo "num is $num"
+done
+if (( $rev  == $sum ))
+then
+echo "$rev is palindrome"
+else
+echo "$rev is not palindrom"
+fi
+}
+
+p=`palindrome`
+echo "$p"
+
+
+
+
+
+Q. find the salary
+
+
+
+#!/bin/bash
+#constant
+isparttime=1;
+isfulltime=2;
+max_hr_in_month=100;
+emp_rate_per_hr=20;
+num_working_days=20;
+#variables
+totalEmpHr=0
+totalWorkingDays=0
