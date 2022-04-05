@@ -1,0 +1,160 @@
+Q. 3Ramdom
+
+
+
+#!/bin/bash
+declare -A a
+declare -A s
+for((i=0;i<=9;i++))
+do
+        x=$(shuf -i 100-999 -n1)
+        a[$i]=$x
+done
+echo ${a[@]}
+echo ${!a[@]}
+s=$(sort -n <(printf "%s\n" "${a[@]}"))
+
+echo "The output After sorting Array" ${s[@]}
+{a[@]}=${s[@]}
+min=${s[0]}
+small=${s[1]}
+large=${s[8]}
+echo "smallest number $min"
+echo "The 2nd Smallest number in Array is: $small"
+echo "The 2nd Largest number in Array is: $large"
+
+
+
+Q.  Integer sum
+
+#!/bin/bash
+
+echo "print sum of three integer adds to ZERO"
+
+echo "enter number till which you want to print any three integer's addition is equal to zero"
+read n
+
+declare -a arr
+arr=(3 1 -3 -2 5)
+#echo ${arr[@]}
+
+for(( i=0;i<=$n;i++ ))
+do
+for(( j=$i+1;j<=$n;j++ ))
+do
+for(( k=$j+1;k<=$n;k++ ))
+do
+if [[ $(( $((arr[i]))+$((arr[j]))+$((arr[k])) )) -eq 0 ]]
+then
+echo "${arr[i]} ${arr[j]} ${arr[k]}"
+fi
+done
+done
+done
+
+
+Q. Pre factorial
+
+
+
+#!/bin/bash
+
+declare -a x
+read -p "Enter a number " n
+
+x=( $(echo $n | factor) )
+echo ${x[@]}
+echo "The Length of primefactors ${#x[@]}"
+echo "The  numbers of Index arrays is ${!x[@]}"
+echo "The Prime factors of $n are ${x[@]}"
+
+
+
+Q.  Rand
+
+
+
+#!/bin/bash
+
+echo "generate 10 random 3 digit number"
+declare -a arr
+
+for (( i=1;i<=10;i++ ))
+do
+ra= $(( RANDOM%3 ))
+#echo $ra
+arr[i]=$((RANDOM%900+100))
+done
+
+#print the array of value
+echo arr values are:"${arr[@]}"
+
+#print 2nd largest 2nd smallest element from array
+
+min=$((arr[0]))
+secondmin=$((arr[0]))
+
+for(( i=0;i<=10;i++ ))
+do
+if[[ ${arr[i]} -lt $min ]]
+then
+secondmin=$min
+min=${arr[0]}
+echo $min
+elif [[ ${arr[i]} -lt $secondmin -a ${arr[i]} -gt $min ]]
+then
+secondmin=${arr[i]}
+fi
+done
+echo "smallest number " $min
+echo "second smallest number " $secondmin
+
+maximum=$((arr[0]))
+secondMaximum=$((arr[0]))
+
+for (( index=0; index<=10; index++ ))
+do
+        if [ $((arr[index])) -gt $maximum ]
+        then
+        secondMaximum=$maximum
+        maximum=$((arr[index]))
+        elif [ $((arr[index])) -gt $secondMaximum -a $((arr[index])) -lt $maximum  ]
+        then
+        secondMaximum=$((arr[index]))
+        fi
+done
+
+#To print
+echo "maximum" $maximum
+echo "second maximum" $secondMaximum
+
+
+
+Q.  Reptwise
+
+
+
+#!/bin/bash
+declare -a number
+i=0
+for((n=0;n<=100;n++))
+do
+  if [ $(($n%11)) -eq 0 ]
+  then
+    number[$i]=$n
+          i=$(($i+1))
+  fi
+done
+
+echo "The Repeated digits of given numbers are  ${number[@]}"
+
+for i in ${!number[@]}
+        do
+                echo "$i=${number[$i]}"
+
+        done
+
+
+
+
+
